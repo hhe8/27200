@@ -1,0 +1,33 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb}
+\begin{document}
+%% begin macros
+\def\bfor{\textbf{for}}
+\def\bdo{\textbf{do}}
+\def\bwhile{\textbf{while}}
+\def\bend{\textbf{end}}
+\def\bif{\textbf{if}}
+\def\bthen{\textbf{then}}
+\def\belse{\textbf{else}}
+\def\breturn{\textbf{return}}
+\def\bexit{\textbf{exit}}
+\def\bprint{\textbf{print}}
+%% end macros
+%% begin pseudocode
+\begin{tabbing}
+mmm\= mm\= mm\= mm\= mm\= \kill
+00 \> \bif\ $b<a$ \bthen\ \breturn\ NIL, \bexit\ \quad (list empty) \\
+01 \> $\ell:=a,$ $u:=b$\ (initializing lower and upper limits of
+current range) \\
+02 \> \bwhile\ $\ell<u$ \\
+03 \> \> $p:=\lfloor (\ell+u)/2\rfloor$\qquad (pivot) \\
+04 \> \> \bif\ $x\le A[p]$ \bthen\ $u:=p$ \\
+05 \> \> \> \belse\ $\ell:=p+1$ \\
+06 \> \bend(\bwhile) \\
+07 \> \bif\ $x=A[\ell]$ \bthen\ \breturn\ $\ell$, \bexit\ \quad
+(item found)\\
+08 \> \breturn\ NIL, \bexit\ \quad (item not found) \\
+\end{tabbing}
+%% end pseudocode
+\end{document}
+

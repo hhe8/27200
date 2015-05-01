@@ -1,0 +1,124 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\title{Homework 3 due Friday 1/29/2015}
+\author{Huimin He}
+\begin{document}
+\maketitle
+
+3.3 Membership cards
+\begin{enumerate}
+\begin{enumerate}
+\item
+The sample space (number of outcomes) is 2000! Because the cards are dealt randomly and there are 2000! permutations for dealings the cards.
+
+\item
+Denote $X$ as the integer value random variable with range $[0,2000]$. The sample space $\Omega$ is all the permutations 2000!. X is a mapping from $\Omega$ to integer values 0 to 2000.
+\[
+E(X) = \sum_{y \in [0,2000]}^{}P(X=y)X
+\]
+
+X can be written as an indicator.
+Denote $I_{1}$ as the indicator that the first person has a card equal to his birthday.
+So $X = I_{1} + I_{2} + I_{3} + ... + I_{2000}$ since we have 2000 people. 
+
+The role of vodka is to ensure that any permutation of the cards is dealt equally likely. The process can be seen as sampling without replacement so the chance for a person to get any card of the 2000 is $1/2000$. Assume in the room that each person's birth year is within [0,2000] (integer value). The indicator $I_{i}$ for $i^{th}$ person to get the card agreeing with his birth year is 1/2000 since the cards do not repeat value. \\
+
+\[I_{i}=\begin{cases} 1, & \mbox{with probablity 1/2000 }  \\ 0, & \mbox{with probability 1999/2000} \end{cases}
+\]
+
+With the indicator caculate $E(X)$: 
+\[
+E(X) = E(\sum_{i=1}^{2000}I_{i}) 
+\]
+Due to the linearity of expectation
+\[
+E(X) = \sum_{i=1}^{2000}E(I_{i})
+\]
+
+\[
+E(I_{i}) = p(i) = 1/2000
+\]
+
+$p(i)$ is the probablity for $i^{th}$ person to get the lucky card.
+
+and the $E(I_{i})$ is same for every person i.
+\[
+E(X) = 2000 \times 1/2000 = 1
+\]
+\end{enumerate}
+\end{enumerate}
+
+\bigskip
+3.5 Sort of sorting
+
+Denote the time required to SOS $1\%$ of the permutation of list of n distinctive items to be $T(n)$. We need to show that $T(n) \gtrsim n(\log_2 n)$. It suffices to show that $T(n)$ is greater than $(1-\epsilon)n\log_2 n$ for all positive $\epsilon$ When n is large.Since we know that SOS adopts comparison based sorting. Any comparison based sorting needs to compare the ordering of pairs and thus can be modeled with a binary tree. The number of leaves of the tree is all the possible permutation of the set of elimentes to be sorted. Because at each node of the tree, exactly one comparison is made. The the minimum number of steps to sort any input is $\log_2 (n!)$. To sort $1\%$ of the permutation, still $\log_2(n!)$ comparisons need to be made. So   
+\[
+T(n) \geq  \log_2(n!)
+\]
+When n is large
+\[
+\log_2(n!) \sim n\log_2(n)
+\]
+So
+\[
+T(n) \geq n\log_2(n)
+\]
+
+So there exists an positive $\epsilon$ s.t.
+\[
+T(n) \geq (1-\epsilon) n \log_2(n)
+\]
+Since
+\[
+(1-\epsilon) < 1
+\]
+
+\bigskip
+3.8 Information lower bound
+
+Claim: the amount of ternary questions needed to ask for to identity an object in N object is $\lceil{\log_3 N}\rceil$
+The proof of this is straightforward. With a ternary decision tree structure, the height of the tree is $\lceil{\log_3 N}\rceil$ where N is the total number of leaves. The total number of leaves is euqal to the number of objects. The number of question to ask to reach the the correct answer is at least the height of the tree which is$\lceil{\log_3 N}\rceil$. 
+
+\bigskip
+3.10 Fake coin lower bounds
+When there are 14 coins. It is impossible to figure which one is fake by asking 3 ternary question. The number of questions needed is $\log_3 N_{total obejects}$. In this case, the number of total objects is $2N$ (14 coins with 1 fake. So there are 28 possible outcomes). So for 14 coins we need $\lceil{\log_3 28}\rceil > 3$ questions.
+
+\bigskip
+3.13 car race problem.
+
+(b) Show that speed $ V = O(\sqrt{n})$. Construct a path with the longest distrance that no velocity is lost and acceleration is always $(1,1)$. The diagnal should be the longest path keeping acceleration $(1,1)$. So the speed of the car along this path with acceleration $(1,1)$ would have speed increasing in both direction by 1 every time step. Speed would be $(1,1)$ at time $t_1$, $(2,2)$ at time $t_2$, $(X,X)$ at time $t_x$. The distance traveled at each time step would thus be $S_t_1 = \sqrt{2}$, $S_t_2 = 2\sqrt{2}$,$S_t_x = x\sqrt{2}$. 
+so sum the distance up.
+\[
+\sum_{i=1}^{X}S_t_i = \sum_{i=1}^{X}\sqrt{2}i = \sqrt{2}(1+X)X/2
+\]
+We also know that the longest path would have distance $\sqrt{2}(n+1)$
+. since $n+1$ by $n+1$ is the size of track matrix. So at max speedwith longest path possible. 
+
+\[
+\sqrt{2}(1+X)X/2 = \sqrt{2}(n+1)
+\]
+Then
+\[
+(X^2)+X = 2(n+1)
+\]
+Since X is positive
+\[
+X^2 < 2(n)
+\]
+At $t_x$, the speed of the race car is $2X$. We can have
+\[
+4X^2 < 8(n)
+\]
+So,
+\[
+2X < 2\sqrt{2n}
+\]
+It is obvious that there exists $c$, let $c=10$, s.t. 
+\[
+2X < 2\sqrt{2}c\sqrt{n}
+\]
+for any $n=n_0$.
+So it is proved that speed is bounded by $O(\sqrt{n})$
+
+\end{document}
